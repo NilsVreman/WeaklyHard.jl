@@ -6,7 +6,7 @@ anonymously as supplementary material to the paper:
 The following file contains an introduction on how to use the tool alongside
 some simple examples.
 
-__TODO__: Fix this file
+__TODO ASAP__: Fix this file 
 
 ## How To Activate and Use the Package
 The WeaklyHard.jl package was developed in Julia [1] version 1.5.4.
