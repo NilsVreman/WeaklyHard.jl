@@ -5,17 +5,14 @@ export random_sequence,
 ### Functions ###
 #################
 
+"""
+    random_sequence(automaton::Automaton, N::Integer)
+
+The function takes an arbitrary walk of length N in automaton. 
+Returns a sequence that satisfy all weakly-hard constraints used to build the
+automaton.
+"""
 function random_sequence(automaton::Automaton{T}, N::S) where {T <: Integer, S <: Integer}
-    # @description
-    #   The function takes an arbitrary walk of length N corresponding to the
-    #   WHAutomaton, thus generating a sequence that satisfy all weakly-hard
-    #   constraints used to build the automaton.
-    # @param 
-    #   automaton::Automaton:     The weakly-hard automaton
-    #   N::Integer:               The length of the sequence to be generated
-    # @returns 
-    #   Word: The resulting word satisfying the weakly-hard automaton
-    #   constraints.
 
     # Initialise start vertex, character vector, and sequence
     IntType = BigInt
@@ -42,6 +39,13 @@ function random_sequence(automaton::Automaton{T}, N::S) where {T <: Integer, S <
     return seq
 end # function
 
+"""
+    all_sequences(automaton::Automaton, N::Integer)
+
+The function returns a set containing all sequences of length N satisfying the
+constraints used to build the automaton. In other words, the function generates
+the satisfaction set of length N sequences.
+"""
 function all_sequences(automaton::Automaton{T}, N::S) where {T <: Integer, S <: Integer}
     # @description
     #   The function returns a set containing all sequences of length N

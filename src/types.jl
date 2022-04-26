@@ -25,7 +25,9 @@ const X         = AnyChar
 ### WordVertex ###
 ##################
 
-#= A struct to keep track of the current node and its direct children (if some exist) =#
+"""
+A struct keep track of the current node and its direct children (if some exist).
+"""
 mutable struct WordVertex{T <: Integer}
     w::T
     miss::Union{Nothing, WordVertex{T}}
@@ -43,10 +45,14 @@ end # struct
 #= Abstract representation of an automaton type =#
 abstract type AbstractAutomaton end
 
-#= Automaton struct containing a dict to represent the nodes and transitions and the head of the graph.
- #  Key     = Word (represented by integer)
- #  Value   = WordVertex (containing current node and its direct children vertices)
-=#
+"""
+    Automaton()
+
+Automaton struct containing a dict to represent the vertices (including head) and transitions of the automaton.
+
+* Key     = Word (represented by integer). 
+* Value   = WordVertex (containing current vertex and its direct children vertices)
+"""
 struct Automaton{T <: Integer} <: AbstractAutomaton
     head::Union{Nothing, WordVertex{T}}
     data::Dict{T, WordVertex{T}}
@@ -87,9 +93,25 @@ struct AnyMissConstraint <: Constraint
 end
 
 #= Constraint Constructors =#
+"""
+    RowMissConstraint(x)
+Constructor for RowMissConstraint.
+"""
 RowMissConstraint(x::Int64) = RowMissConstraint(ConstraintData(x, x+1))
 RowMissConstraint(x, k)     = RowMissConstraint(ConstraintData(x, x+1))
+"""
+    RowHitConstraint(x)
+Constructor for RowHitConstraint.
+"""
 RowHitConstraint(x, k)      = RowHitConstraint(ConstraintData(x, k))
+"""
+    AnyMissConstraint(x)
+Constructor for AnyMissConstraint.
+"""
 AnyMissConstraint(x, k)     = AnyMissConstraint(ConstraintData(x, k))
+"""
+    AnyHitConstraint(x, k)
+Constructor for AnyHitConstraint.
+"""
 AnyHitConstraint(x, k)      = AnyHitConstraint(ConstraintData(x, k))
 

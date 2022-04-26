@@ -2,13 +2,6 @@
 export build_automaton
 
 function build_automaton(lambda::T) where {T <: Constraint}
-    # @description
-    #   The function creates a minimal weakly-hard automaton according to the
-    #   set of weakly-hard constraints (lambda).
-    # @param 
-    #   lambda::Set{Constraint}: The set of weakly-hard constraints
-    # @returns 
-    #   Automaton: The resulting weakly-hard automaton.     
 
     # Find constraint with maximum K value
     # Extract necessary parameters

@@ -2,7 +2,7 @@ module AutomatonTests
 
 using Test
 using WeaklyHard
-using WeaklyHard: nbits, shift, shift_rowhit, _childexists
+using WeaklyHard: nbits, shift, shift_rowhit, _childexists, consword
 
 ##########################
 #### Common Variables ####

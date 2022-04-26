@@ -380,3 +380,52 @@ function is_equivalent(lambda1::Constraint, lambda2::Constraint)
     return is_dominant(lambda1, lambda2) && is_dominant(lambda2, lambda1)
 
 end # function
+
+##################
+### Docstrings ###
+##################
+
+@doc """
+    is_satisfied(L, w)
+
+Returns whether the word `w` satisfies the constraint `L` or not; here, `L` can be either a single constraint or a constraint set.
+
+# Examples
+```julia-repl
+julia> is_satisfied(AnyHitConstraint(1, 3), 595) # bitstring(595) = ...1001010011
+true
+
+julia> is_satisfied(AnyHitConstraint(1, 3), 600) # bitstring(600) = ...1001011000
+false
+```
+""" is_satisfied
+
+@doc """
+    is_dominant(l1, l2)
+
+Returns whether the weakly-hard constraint `l1` dominates `l2` or not.
+
+# Examples
+```julia-repl
+julia> is_dominant(AnyHitConstraint(1, 3), RowMissConstraint(1))
+false
+
+julia> is_dominant(AnyHitConstraint(1, 3), RowMissConstraint(2))
+true
+```
+""" is_dominant
+
+@doc """
+    is_equivalent(l1, l2)
+
+Returns whether the weakly-hard constraint `l1` is equivalent to `l2` or not.
+
+# Examples
+```julia-repl
+julia> is_equivalent(AnyHitConstraint(1, 3), RowMissConstraint(1))
+false
+
+julia> is_equivalent(AnyHitConstraint(1, 3), RowMissConstraint(2))
+true
+```
+""" is_equivalent

@@ -20,31 +20,21 @@ function _remove_equivalent(Lambda)
     return Lambda_new
 end # function
 
+"""
+    dominant_set(Lambda::Set{Constraint})
+
+Calculates the dominant constraint set, Lambda_star, given a set of weakly-hard
+constraints, Lambda.
+
+# Examples
+```julia-repl
+julia> Lambda_star = dominant_set(Set([RowMissConstraint(1), 
+                                       AnyMissConstraint(3, 5), 
+                                       AnyMissConstraint(1, 7)]))
+Set([AnyMissConstraint(1, 7)])
+```
+"""
 function dominant_set(Lambda::Set{Constraint})::Set{Constraint}
-    # @description
-    #   calculates the dominant constraint set, Lambda*, given a set of
-    #   weakly-hard constraints, Lambda.
-    #
-    #   Definition:
-    #     Given a set of constraints Lambda, the set Lambda* (which is a subset
-    #     of Lambda) is called 'the dominant set of Lambda' iff:
-    #
-    #     (i)     For every pair of constraints (lambda_i, lambda_j) in Lambda*
-    #             it holds that 
-    #               lambda_i </= lambda_j, for all i =/= j.
-    #     (ii)    For every lambda_i in Lambda but not in Lambda*, there exists
-    #             at least one constraint lambda_j in Lambda* for which
-    #               lambda_j <= lambda_i
-    # @param 
-    #   Lambda::Set{Constraint}: The original set of weakly-hard constraints
-    # @returns 
-    #   Set{Constraint}: The dominant constraint subset, Lambda*
-    # @examples
-    #     Lambda* = 
-    #       dominant_set(Set([
-    #           RowMissConstraint(1), 
-    #           AnyMissConstraint(3, 5), 
-    #           AnyMissConstraint(1, 7)])) -> Set([AnyMissConstraint(1, 7)])
 
     Lambda = _remove_equivalent(Lambda)
 

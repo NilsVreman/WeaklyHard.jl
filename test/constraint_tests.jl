@@ -2,6 +2,7 @@ module ConstraintTests
 
 using Test
 using WeaklyHard
+using WeaklyHard: consword
 
 ##############################
 ### Generate all sequences ###

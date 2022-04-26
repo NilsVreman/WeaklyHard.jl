@@ -2,13 +2,6 @@
 export build_automaton
 
 function build_automaton(Lambda::Set{T}) where {T <: Constraint}
-    # @description
-    #   The function creates a minimal weakly-hard automaton according to the
-    #   set of weakly-hard constraints (Lambda).
-    # @param 
-    #   Lambda::Set{Constraint}: The set of weakly-hard constraints
-    # @returns 
-    #   Automaton: The resulting weakly-hard automaton.     
 
     # Find constraint with maximum K value
     lambda_max_k = reduce(Lambda) do x, y
@@ -200,3 +193,35 @@ function _build_automaton_set!(Lambda::Set{T},
 
     return automaton
 end # function
+
+@doc """
+    build_automaton(Lambda::T) where {T <: Union{Constraint, Set{Constraint}}}
+
+Creates a minimal weakly-hard automaton according to the (set of) weakly-hard
+constraint(s) `Lambda`.
+
+NOTE: The function handles both single constraints and sets of constraints.
+
+# Examples
+```julia-repl
+julia> build_automaton(AnyHitConstraint(1, 3))
+Automaton{Int64} with 3 vertices:
+{
+        WordVertex{Int64}(100 => ---, 001)
+        WordVertex{Int64}(010 => 100, 001)
+        WordVertex{Int64}(001 => 010, 001)
+} with head: WordVertex{Int64}(1 => 10, 1)
+
+julia> build_automaton(Set([AnyHitConstraint(1, 3), RowHitConstraint(2, 6)]))
+Automaton{Int64} with 7 vertices:
+{
+        WordVertex{Int64}(001101 => 011010, 000011)
+        WordVertex{Int64}(000110 => 001100, 001101)
+        WordVertex{Int64}(011001 => ------, 000011)
+        WordVertex{Int64}(011010 => ------, 110101)
+        WordVertex{Int64}(001100 => ------, 011001)
+        WordVertex{Int64}(000011 => 000110, 000011)
+        WordVertex{Int64}(110101 => ------, 000011)
+} with head: WordVertex{Int64}(11 => 110, 11)
+```
+""" build_automaton
