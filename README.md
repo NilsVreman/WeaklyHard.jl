@@ -8,7 +8,7 @@ some simple examples.
 
 
 [![Build Status](https://github.com/NilsVreman/WeaklyHard.jl/workflows/CI/badge.svg)](https://github.com/NilsVreman/WeaklyHard.jl/actions)
-[![Coverage](https://codecov.io/gh/NilsVreman/WeaklyHard.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/NilsVreman/WeaklyHard.jl)
+[![Coverage](https://codecov.io/gh/NilsVreman/WeaklyHard.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/NilsVreman/WeaklyHard.jl)
 
 __TODO ASAP__: Fix this file 
 
