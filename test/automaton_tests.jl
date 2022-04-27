@@ -209,4 +209,34 @@ end # function
     println("Executed tests on $(length(tested)) different automata")
 end # testset
 
+@testset "Set-construction Tests" begin
+    constraint_names = ["RowMissConstraint", "RowHitConstraint", "AnyMissConstraint", "AnyHitConstraint"]
+    n_constraints    = 3
+    k_max            = 15
+    n_tests          = 100
+
+    for _ in 1:n_tests
+        Lambda = Set{Constraint}()
+        n = rand(1:n_constraints)
+        for _ in 1:n
+            k = rand(1:k_max)
+            x = rand(0:k)
+            lambda_type = rand(constraint_names)
+            if lambda_type == "RowHitConstraint"
+                x = floor(Int, x/2)
+            end
+            push!(Lambda, getfield(WeaklyHard, Symbol(lambda_type))(x, k))
+        end # for
+
+        Lambda_star = dominant_set(Lambda)
+
+        G = build_automaton(Lambda_star)
+        minimize_automaton!(G)
+        all_seq = all_sequences(G, k_max)
+        for seq in all_seq
+            @test is_satisfied(Lambda_star, seq)
+        end # for
+    end # for
+end # testset
+
 end # module
