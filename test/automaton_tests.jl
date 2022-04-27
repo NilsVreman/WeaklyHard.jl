@@ -213,7 +213,7 @@ end # testset
     constraint_names = ["RowMissConstraint", "RowHitConstraint", "AnyMissConstraint", "AnyHitConstraint"]
     n_constraints    = 3
     k_max            = 15
-    n_tests          = 100
+    n_tests          = 1000
 
     for _ in 1:n_tests
         Lambda = Set{Constraint}()
@@ -234,6 +234,12 @@ end # testset
         minimize_automaton!(G)
         all_seq = all_sequences(G, k_max)
         for seq in all_seq
+            if !is_satisfied(Lambda_star, seq)
+                @show Lambda
+                @show Lambda_star
+                @show seq
+                @show bitstring(seq)
+            end
             @test is_satisfied(Lambda_star, seq)
         end # for
     end # for
