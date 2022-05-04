@@ -7,19 +7,20 @@ export AbstractAutomaton,
     AnyHitConstraint,
     AnyMissConstraint,
     Hit, H,
-    Miss, M,
-    AnyChar, X
+    Miss, M
 
 ################
 ### Alphabet ###
 ################
 
+""" Miss representated as UInt8(0) """
 const Miss      = UInt8(0)
-const Hit       = UInt8(1)
-const AnyChar   = UInt8(2)
-const H         = Hit
+""" Miss representated as UInt8(0) """
 const M         = Miss
-const X         = AnyChar
+""" Hit representated as UInt8(1) """
+const Hit       = UInt8(1)
+""" Hit representated as UInt8(1) """
+const H         = Hit
 
 ##################
 ### WordVertex ###
@@ -42,7 +43,7 @@ end # struct
 ### Automaton ###
 #################
 
-#= Abstract representation of an automaton type =#
+""" Abstract representation of an automaton type """
 abstract type AbstractAutomaton end
 
 """
@@ -66,7 +67,7 @@ end # struct
 ### Constraints ###
 ###################
 
-#= Abstract representation of a constraint type =#
+""" Abstract representation of a constraint type """
 abstract type Constraint end
 
 #= Data representation for individual constraints =#
@@ -100,12 +101,12 @@ Constructor for RowMissConstraint.
 RowMissConstraint(x::Int64) = RowMissConstraint(ConstraintData(x, x+1))
 RowMissConstraint(x, k)     = RowMissConstraint(ConstraintData(x, x+1))
 """
-    RowHitConstraint(x)
+    RowHitConstraint(x, k)
 Constructor for RowHitConstraint.
 """
 RowHitConstraint(x, k)      = RowHitConstraint(ConstraintData(x, k))
 """
-    AnyMissConstraint(x)
+    AnyMissConstraint(x, K)
 Constructor for AnyMissConstraint.
 """
 AnyMissConstraint(x, k)     = AnyMissConstraint(ConstraintData(x, k))

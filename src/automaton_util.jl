@@ -22,7 +22,7 @@ Base.haskey(g::Automaton{T}, w::T) where {T <: Integer}                         
 """
     vertices(automaton::Automaton)
 
-Returns all the vertices in automaton.
+Returns all the vertices in `automaton`.
 """
 function vertices(automaton::Automaton{T}) where {T <: Integer}
     return values(automaton.data)
@@ -31,9 +31,7 @@ end # function
 """
     transitions(automaton::Automaton)
 
-Returns all the transitions in the automaton in the form of a set of pairs where
-each pair consists of `(v1, v2, c12)`, i.e., the tail of the transition `v1`, the
-head of the transition `v2`, and the label of the transition `c12`.
+Returns all the transitions in `automaton` in the form of a set of pairs where each pair consists of `(v1, v2, c12)`, i.e., the tail of the transition `v1`, the head of the transition `v2`, and the label of the transition `c12`.
 """
 function transitions(automaton::Automaton{T}) where {T <: Integer}
 
@@ -69,7 +67,7 @@ end # function
 
 Minimises the automaton representation of a set of weakly-hard constraints. 
 
-NOTE: Only required for automaton constructed from sets including both `RowHitConstraint`s and any of the `RowMissConstraint`, `AnyHitConstraint`, or `AnyMissConstraint`s.
+NOTE: Only required for `automaton` constructed from sets including both `RowHitConstraint`s and any of the `RowMissConstraint`, `AnyHitConstraint`, or `AnyMissConstraint`s.
 """
 function minimize_automaton!(automaton::Automaton{T}) where {T <: Integer}
     changed = true

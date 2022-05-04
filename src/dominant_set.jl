@@ -23,8 +23,7 @@ end # function
 """
     dominant_set(Lambda::Set{Constraint})
 
-Calculates the dominant constraint set, Lambda_star, given a set of weakly-hard
-constraints, Lambda.
+Calculates the dominant constraint set given a set of weakly-hard constraints, `Lambda`.
 
 # Examples
 ```julia-repl

@@ -8,9 +8,8 @@ export random_sequence,
 """
     random_sequence(automaton::Automaton, N::Integer)
 
-The function takes an arbitrary walk of length N in automaton. 
-Returns a sequence that satisfy all weakly-hard constraints used to build the
-automaton.
+The function takes an arbitrary walk of length `N` in `automaton`. 
+Returns a sequence that satisfy all weakly-hard constraints used to build the automaton.
 """
 function random_sequence(automaton::Automaton{T}, N::S) where {T <: Integer, S <: Integer}
 
@@ -42,9 +41,8 @@ end # function
 """
     all_sequences(automaton::Automaton, N::Integer)
 
-The function returns a set containing all sequences of length N satisfying the
-constraints used to build the automaton. In other words, the function generates
-the satisfaction set of length N sequences.
+The function returns a set containing all sequences of length `N` satisfying the constraints used to build the automaton.
+In other words, the function generates the satisfaction set of length `N` sequences.
 """
 function all_sequences(automaton::Automaton{T}, N::S) where {T <: Integer, S <: Integer}
     # @description
