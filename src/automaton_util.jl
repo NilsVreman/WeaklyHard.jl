@@ -66,8 +66,6 @@ end # function
     minimize_automaton!(automaton::Automaton)
 
 Minimises the automaton representation of a set of weakly-hard constraints. 
-
-NOTE: Only required for `automaton` constructed from sets including both `RowHitConstraint`s and any of the `RowMissConstraint`, `AnyHitConstraint`, or `AnyMissConstraint`s.
 """
 function minimize_automaton!(automaton::Automaton{T}) where {T <: Integer}
     changed = true
