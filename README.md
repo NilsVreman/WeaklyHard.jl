@@ -72,9 +72,9 @@ G2 = build_automaton(lambda2)
 #         WordVertex{Int64}(00001 => -----, 00011)
 # } with head: WordVertex{Int64}(11 => 110, 11)
 
-# Generate a random sequence of length N satisfying the constraint represented by G
+# Generate a random sequence of length N satisfying the constraint represented by G2
 N = 100_000
-seq = random_sequence(G, N)
+seq = random_sequence(G2, N)
 bitstring(seq)
 # The bit representation of the integer
 ```
