@@ -209,6 +209,10 @@ end # function
     println("Executed tests on $(length(tested)) different automata")
 end # testset
 
+############################
+##### Automata tests #######
+############################
+
 @testset "Set-construction Tests" begin
     constraint_names = ["RowMissConstraint", "RowHitConstraint", "AnyMissConstraint", "AnyHitConstraint"]
     n_constraints    = 3
@@ -244,5 +248,47 @@ end # testset
         end # for
     end # for
 end # testset
+
+
+function equivalence_test_min(g_min::Automaton, g::Automaton)
+    ks_min = keys(g_min.data)
+    ks     = keys(g.data)
+    for k_min in ks_min
+        if !(k_min in ks)
+            return false # if the vertex doesn't exist in both automata
+        elseif WeaklyHard._childexists(g.data[k_min], :miss)
+            if g_min.data[k_min].miss.w != g.data[k_min].miss.w || g_min.data[k_min].hit.w != g.data[k_min].hit.w
+                return false # if the vertices children differ in the different automata
+            end # if
+        else
+            if g_min.data[k_min].hit.w != g.data[k_min].hit.w
+                return false # if the vertices children differ in the different automata
+            end # if
+        end # if
+    end # for
+    return true
+end # function
+@testset "Minimizing single-constraint automata" begin
+    constraint_names = ["RowMissConstraint", "RowHitConstraint", "AnyMissConstraint", "AnyHitConstraint"]
+    k_max            = 15
+    n_tests          = 1_000
+
+    for _ in 1:n_tests
+        k = rand(1:k_max)
+        x = rand(0:k)
+        lambda_type = rand(constraint_names)
+        if lambda_type == "RowHitConstraint"
+            x = floor(Int, x/2)
+        end
+        l = getfield(WeaklyHard, Symbol(lambda_type))(x, k)
+
+        g_min = build_automaton(l)
+        g     = build_automaton(l)
+        minimize_automaton!(g_min)
+
+        @test equivalence_test_min(g_min, g)
+    end # for
+end # testset
+
 
 end # module
