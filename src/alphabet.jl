@@ -2,11 +2,7 @@
 ### Auxiliary Functions ###
 ###########################
 
-"""
-    consword(w::Integer)
-
-Create a word with n consecutive set bits as least significant.
-"""
+#= Create a word with n consecutive set bits as least significant. =#
 consword(n::T) where {T <: Integer} = (T(1) << n) - T(1)
 
 #= Counts the number of bits in the integer w =#
@@ -30,12 +26,8 @@ end # function
 ### Functions ###
 #################
 
-"""
-    shift(w::Integer, c)
-
-Left shifts bits once and adds new bit as LSB (according to character c). 
-Removes the MSB if character is a Hit.
-"""
+#= Left shifts bits once and adds new bit as LSB (according to character c). 
+   Removes the MSB if character is a Hit. =#
 function shift(w::T, c) where {T <: Integer}
     if c == Miss
         return w << T(1)
@@ -44,12 +36,8 @@ function shift(w::T, c) where {T <: Integer}
     end
 end
 
-"""
-    shift_rowhit(w::Integer, c, n::Integer)
-
-Left shifts bits once and adds new bit as LSB (according to character c). 
-Returns the word n if the bits in nw coincide with the ones in n.
-"""
+#= Left shifts bits once and adds new bit as LSB (according to character c). 
+   Returns the word n if the bits in nw coincide with the ones in n. =#
 function shift_rowhit(w::T, c, n::T) where {T <: Integer}
     #= Shift bits according to charcter c and default to n if last few char are equal to n =#
     if c == Miss
