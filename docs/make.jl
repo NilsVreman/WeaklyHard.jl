@@ -17,8 +17,4 @@ makedocs(modules=[WeaklyHard],
              "Index" => "man/summary.md"
              ])
 
-deploydocs(
-           repo = "github.com/NilsVreman/WeaklyHard.jl.git",
-           devbranch = "main",
-           versions = [ "stable" => "v^", "v#.#" ],
-          )
+deploydocs(repo = "github.com/NilsVreman/WeaklyHard.jl.git")
