@@ -31,6 +31,21 @@ end # function
 
 The function returns a set containing all sequences of length `N` satisfying the constraints used to build the automaton.
 In other words, the function generates the satisfaction set of length `N` sequences.
+
+## Example
+```jldoctest
+julia> all_sequences(build_automaton(AnyHitConstraint(2, 3)), 5)
+Set{Int8} with 9 elements:
+  22
+  13
+  15
+  29
+  27
+  31
+  30
+  14
+  23
+```
 """
 function all_sequences(automaton::Automaton{T}, N::S) where {T <: Integer, S <: Integer}
 

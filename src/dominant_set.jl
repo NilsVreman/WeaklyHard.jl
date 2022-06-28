@@ -26,11 +26,12 @@ end # function
 Calculates the dominant constraint set given a set of weakly-hard constraints, `Lambda`.
 
 # Examples
-```julia-repl
-julia> Lambda_star = dominant_set(Set([RowMissConstraint(1), 
-                                       AnyMissConstraint(3, 5), 
-                                       AnyMissConstraint(1, 7)]))
-Set([AnyMissConstraint(1, 7)])
+```jldoctest
+julia> dominant_set(Set([RowMissConstraint(1), 
+                         AnyMissConstraint(3, 5), 
+                         AnyMissConstraint(1, 7)]))
+Set{Constraint} with 1 element:
+  AnyMissConstraint(1, 7)
 ```
 """
 function dominant_set(Lambda::Set{Constraint})::Set{Constraint}

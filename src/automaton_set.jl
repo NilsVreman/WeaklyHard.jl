@@ -202,8 +202,8 @@ constraint(s) `Lambda`.
 
 NOTE: The function handles both single constraints and sets of constraints.
 
-# Examples
-```julia-repl
+## Examples
+```jldoctest
 julia> build_automaton(AnyHitConstraint(1, 3))
 Automaton{Int64} with 3 vertices:
 {

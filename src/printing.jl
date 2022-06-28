@@ -66,8 +66,7 @@ A String giving the literal bit representation of a big integer `w`.
 If `n` is specified, it pads the bit representation to contain _at least_ `n` characters.
 
 ## Examples
-
-```julia-repl
+```jldoctest
 julia> bitstring(BigInt(4))
 "100"
 

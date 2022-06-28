@@ -391,7 +391,7 @@ end # function
 Returns whether the word `w` satisfies the constraint `L` or not; here, `L` can be either a single constraint or a constraint set.
 
 # Examples
-```julia-repl
+```jldoctest
 julia> is_satisfied(AnyHitConstraint(1, 3), 595) # bitstring(595) = ...1001010011
 true
 
@@ -406,7 +406,7 @@ false
 Returns whether the weakly-hard constraint `l1` dominates `l2` or not.
 
 # Examples
-```julia-repl
+```jldoctest
 julia> is_dominant(AnyHitConstraint(1, 3), RowMissConstraint(1))
 false
 
@@ -421,7 +421,7 @@ true
 Returns whether the weakly-hard constraint `l1` is equivalent to `l2` or not.
 
 # Examples
-```julia-repl
+```jldoctest
 julia> is_equivalent(AnyHitConstraint(1, 3), RowMissConstraint(1))
 false
 
