@@ -2,6 +2,8 @@
 
 [![Build Status](https://github.com/NilsVreman/WeaklyHard.jl/workflows/CI/badge.svg)](https://github.com/NilsVreman/WeaklyHard.jl/actions)
 [![Coverage](https://codecov.io/gh/NilsVreman/WeaklyHard.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/NilsVreman/WeaklyHard.jl)
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://NilsVreman.github.io/WeaklyHard.jl/stable)
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://NilsVreman.github.io/WeaklyHard.jl/dev)
 
 A toolbox for analysing weakly-hard constraints in Julia.
 
