@@ -1,0 +1,6 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+WeaklyHard = "e696503b-f323-426b-b112-c19e2df62724"
+
+[compat]
+Documenter = "0.27"

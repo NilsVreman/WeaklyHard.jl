@@ -1,8 +1,9 @@
 using Documenter, WeaklyHard
 
-DocMeta.setdocmeta!(WeaklyHard, :DocTestSetup, :(using WeaklyHard); recursive=true)
+#DocMeta.setdocmeta!(WeaklyHard, :DocTestSetup, :(using WeaklyHard); recursive=true)
 
 makedocs(modules=[WeaklyHard],
+         format=Documenter.HTML(),
          sitename="WeaklyHard.jl",
          pages=[
              "Home" => "index.md",
