@@ -13,13 +13,13 @@ export AbstractAutomaton,
 ### Alphabet ###
 ################
 
-""" Miss representated as UInt8(0) """
+""" A deadline miss -- representated as UInt8(0) """
 const Miss      = UInt8(0)
-""" Miss representated as UInt8(0) """
+""" A deadline miss -- representated as UInt8(0) (equivalent to Miss) """
 const M         = Miss
-""" Hit representated as UInt8(1) """
+""" A deadline hit -- representated as UInt8(1) """
 const Hit       = UInt8(1)
-""" Hit representated as UInt8(1) """
+""" A deadline hit -- representated as UInt8(1) (equivalent to Hit) """
 const H         = Hit
 
 ##################
@@ -106,7 +106,7 @@ Constructor for RowHitConstraint.
 """
 RowHitConstraint(x, k)      = RowHitConstraint(ConstraintData(x, k))
 """
-    AnyMissConstraint(x, K)
+    AnyMissConstraint(x, k)
 Constructor for AnyMissConstraint.
 """
 AnyMissConstraint(x, k)     = AnyMissConstraint(ConstraintData(x, k))
