@@ -1,6 +1,3 @@
-export bitstring, 
-    show
-
 #################
 ### Automaton ###
 #################
@@ -62,8 +59,24 @@ end
 ### Alphabet ###
 ################
 
-Base.bitstring(w::BigInt)               = string(w, base = 2)
-Base.bitstring(w::BigInt, N::Integer)   = string(w, pad = unsigned(N), base = 2)
+"""
+    bitstring(w::BigInt [, n::Integer])
+
+A String giving the literal bit representation of a big integer `w`.
+If `n` is specified, it pads the bit representation to contain _at least_ `n` characters.
+
+## Examples
+
+```julia-repl
+julia> bitstring(BigInt(4))
+"100"
+
+julia> bitstring(BigInt(4), 5)
+"00100"
+``` 
+"""
+Base.bitstring(w::BigInt)                    = string(w, base = 2)
+Base.bitstring(w::BigInt, N::Integer)        = string(w, pad = unsigned(N), base = 2)
 
 ##################
 ### Constraint ###
@@ -73,4 +86,3 @@ function Base.show(io::IO, lambda::Constraint)
     print(io, typeof(lambda))
     print(io, (lambda.x, lambda.k))
 end
-
