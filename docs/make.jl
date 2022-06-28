@@ -12,4 +12,11 @@ makedocs(modules=[WeaklyHard],
              "Index" => "man/summary.md"
              ])
 
-deploydocs(repo = "github.com/NilsVreman/WeaklyHard.jl.git")
+deploydocs(;
+           repo = "github.com/NilsVreman/WeaklyHard.jl.git",
+           target = "build",
+           devbranch = "main",
+           branch = "gh-pages",
+           versions = [ "stable" => "v^", "v#.#" ],
+           deploy_config = Documenter.GitHubActions
+          )
